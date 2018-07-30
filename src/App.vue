@@ -1,16 +1,23 @@
 <template>
   <div id="wrap">
     <TheHeader/>
+    <!-- TheFooter -->
+    <div id="main-container" class="container main-container">
+      <router-view/>
+    </div>
+    <TheFooter/>
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/layouts/TheHeader'
-
+// 页脚
+import TheFooter from '@/components/layouts/TheFooter'
 export default {
   name: 'App',
   components: {
-    TheHeader
+    TheHeader,
+    TheFooter,
   }
 }
 </script>
