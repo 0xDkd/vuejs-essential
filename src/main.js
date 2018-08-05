@@ -5,13 +5,25 @@ import router from './router'
 import './directives'
 //全局组件
 import './components'
+//Vuex
+import store from './store'
+// 引入插件
+import VueSweetalert2 from './plugins/vue-sweetalert2'
+import Message from './plugins/message'
+// 使用插件
+Vue.use(VueSweetalert2)
+Vue.use(Message)
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  //Router
   router,
+  //Vuex
+  store,
+  
   components: { App },
   template: '<App/>'
 })
