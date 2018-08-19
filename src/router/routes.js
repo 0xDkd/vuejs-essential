@@ -7,8 +7,8 @@ export default [{
   {
     path: '/',
     name: 'Home',
-    component: () =>
-      import ('@/views/Home')
+    alias: '/topics',
+    component: () => import('@/views/Home')
   },
   {
     path: '*',
@@ -67,13 +67,6 @@ export default [{
       auth: true
     }
   },
-  // Content
-  {
-    path: '/articles/:articleId/content',
-    name: 'Content',
-    component: () =>
-      import ('@/views/articles/Content.vue')
-  },
   // Edit
   {
     path: '/articles/:articleId/edit',
@@ -83,6 +76,24 @@ export default [{
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/:user',
+    component: () =>
+      import ('@/views/articles/Column'),
+    children: [{
+        path: '',
+        name: 'Column',
+        component: () =>
+          import ('@/views/articles/List.vue')
+      },
+      {
+        path: '/articles/:articleId/content',
+        name: 'Content',
+        component: () =>
+          import ('@/views/articles/Content.vue')
+      }
+    ]
   },
 
 ]
